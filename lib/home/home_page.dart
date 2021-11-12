@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:push_notifs_o2021/books.dart';
 import 'package:push_notifs_o2021/main.dart';
+import 'package:push_notifs_o2021/utils/constants_utils.dart';
 import 'package:push_notifs_o2021/utils/notification_util.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -121,6 +122,19 @@ class _HomePageState extends State<HomePage> {
               }
           },
         );
+    FirebaseMessaging.onMessage.listen(
+      (RemoteMessage m) {
+        AwesomeNotifications().createNotification(
+          content: NotificationContent(
+            id: 123,
+            channelKey: channelSimpleId,
+            title: m.notification!.title,
+            body: m.notification!.body,
+          ),
+        );
+        print("token: ${FirebaseMessaging.instance.getToken()}");
+      },
+    );
     super.initState();
   }
 
