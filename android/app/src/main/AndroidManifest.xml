@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.push_notifs_o2021">
    <application
-        android:label="push_notifs_o2021"
+        android:label="Notif Test"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
